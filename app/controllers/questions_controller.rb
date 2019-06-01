@@ -60,6 +60,8 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    # topic = Topic.create(name: question_params[:topics])
+    # usertopic = UserTopic.create(user_id: helpers.current_user, topic_id: topic.id)
     @question.user = helpers.current_user
     respond_to do |format|
       if @question.save
