@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
 
   # GET /topics
   # GET /topics.json
@@ -59,6 +59,31 @@ class TopicsController < ApplicationController
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def follow
+    # @topic = Topic.find(params[:topic_id])
+    user = helpers.current_user
+    follow = TopicUser.new(topic_id: @topic.id, user_id: user.id)
+    if follow.save
+      flash[:success] = "Topic followed successfully"
+    else
+      flash[:danger] = "Failed to follow topic"
+    end
+    redirect_to @topic
+  end
+
+  def unfollow
+    # @topic = Topic.find(params[:topic_id])
+    user = helpers.current_user
+    follows = TopicUser.where(topic_id: @topic.id, user_id: user.id)
+    unless follows.empty?
+      follows.delete_all
+      flash[:success] = "Topic unfollowed successfully"
+    else
+      flash[:danger] = "Failed to unfollow topic"
+    end
+    redirect_to @topic
   end
 
   private

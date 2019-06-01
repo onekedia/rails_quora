@@ -1,3 +1,126 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background-color: #fafafa;
+}
+
+a.ask-question-link {
+  color: #999
+}
+
+.feed-item {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fff;
+  margin: 8px;
+  padding: 16px;
+}
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #DDD;
+  box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.75em;
+}
+
+.navbar a {
+  color: #c92c27;
+}
+
+.btn-ask {
+  color: #fff;
+  background-color: #c92c27;
+}
+
+.related-question {
+  padding-bottom: 1em;
+}
+
+
+.new-form, .edit-form {
+  display: none;
+}
+
+.input-group textarea {
+  min-height: 34px;
+  height: 34px;
+  overflow-y: hidden;
+  resize: none;
+}
+
+.input-group-addon, .input-group-btn {
+  vertical-align: top;
+}
+.delete-form {
+  display: inline-block;
+}
+.buttons {
+  margin-bottom: 1em;
+}
+
+.btn-blue {
+  background-color: #f1f8fb;
+  border: 1px solid #bbcadc;
+}
+
+.btn-downvote {
+  color: #999;
+}
+
+.btn-gray {
+  background-color: #eee;
+  color: #999;
+}
+
+a.ask-question-link {
+  color: #999
+}
+
+.feed-item {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fff;
+  margin: 8px;
+  padding: 16px;
+}
+.topic-header {
+  padding: 16px;
+  position: relative;
+  > img {
+    width: 96px;
+    height: 96px;
+    border-radius: 4px;
+  }
+  > h3 {
+    display: inline-block;
+    margin-left: 32px;
+  }
+  > span {
+    position: absolute;
+    bottom: 16px;
+    right: 32px;
+  }
+}
+
+.topic-label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 1000px;
+  background-color: #ededf7;
+  color: #808393;
+}
+
+a.topic-label {
+  text-decoration: none;
+  color: #808393;
+}
+
+.remove-topic-link {
+  font-size: 1.5em;
+  color: #222;
+  vertical-align: middle;
+}

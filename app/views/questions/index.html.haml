@@ -1,0 +1,29 @@
+.col-md-2
+  %h4 Feeds
+  %hr
+  .list-group
+    = link_to "All Questions", questions_url, class: "list-group-item"
+    = link_to "Followed Topics", questions_url(topic_id: current_user.topics.pluck(:id)), class: "list-group-item"
+    - current_user.topics.each do |topic|
+      = link_to topic.name, questions_url(topic_id: topic.id), class: "list-group-item"
+.col-md-8
+  .feed-item
+    - if params[:topic_id].is_a?(String)
+      - topic = Topic.find(params[:topic_id])
+      .media
+        .media-left.media-middle
+          %a{:href => "#"}
+            = image_tag "", width: 96, height: 96
+        .media-body.media-middle
+          %h4.media-heading= topic.name
+      %p= topic.description
+      %div
+        = render "topics/follow_button", topic: topic
+    - else
+      %div= current_user.name
+      %h4
+        %a.ask-question-link{data: {"test-id": "questions-index-ask-question-link", toggle: "modal", target: "#new-question-modal"}}
+          What is your question?
+  - @questions.each do |question|
+    .feed-item
+      = render "questions/item", question: question
