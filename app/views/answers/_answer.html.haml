@@ -1,13 +1,12 @@
 %div(style="padding-bottom:2em")
   %h4
-    = answer.user.full_name
+    = answer.user.name
   .text
-    = simple_format answer.answer
+    = simple_format answer.description
   .forms
     - if answer.user == current_user
       = render "answers/edit", answer: answer
   %fieldset.buttons
-    = render "votes/vote_buttons", content: answer
     - if answer.user == current_user
       %button.btn.btn-default.show-edit-form Edit
       = button_to "Delete", answer, method: :delete, remote: true, form_class: "delete-form", class: "btn btn-danger", data: { confirm: "Are you sure?" }
